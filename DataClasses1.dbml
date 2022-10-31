@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Paintings" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-N8FGE93;Initial Catalog=Paintings;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PaintingsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Authors_Paintings" Member="Authors_Paintings">
+    <Type Name="Authors_Painting">
+      <Column Name="AuthorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MiddleName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="PaintingStyle" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="YearBorn" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PaintingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NameOfPainting" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MadeIn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Medium" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+    <InsertFunction FunctionId="FunctionId1">
+      <Argument Parameter="author_id" Member="AuthorID" />
+      <Argument Parameter="painting_name" Member="NameOfPainting" />
+      <Argument Parameter="painting_ym" Member="MadeIn" />
+      <Argument Parameter="painting_medium" Member="Medium" />
+    </InsertFunction>
+    <UpdateFunction FunctionId="FunctionId2">
+      <Argument Parameter="author_id" Member="AuthorID" />
+      <Argument Parameter="painting_id" Member="PaintingID" />
+      <Argument Parameter="author_first_name" Member="FirstName" />
+      <Argument Parameter="author_middle_name" Member="MiddleName" />
+      <Argument Parameter="author_last_name" Member="LastName" />
+      <Argument Parameter="author_painting_style" Member="PaintingStyle" />
+      <Argument Parameter="author_yb" Member="YearBorn" />
+      <Argument Parameter="name_painting" Member="NameOfPainting" />
+      <Argument Parameter="year_made" Member="MadeIn" />
+      <Argument Parameter="medium" Member="Medium" />
+    </UpdateFunction>
+  </Table>
+  <Table Name="dbo.Authors" Member="Authors">
+    <Type Name="Author">
+      <Column Name="AuthorID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MiddleName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="PaintingStyle" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="YearBorn" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+    <InsertFunction FunctionId="FunctionId3">
+      <Argument Parameter="author_id" Member="AuthorID" />
+    </InsertFunction>
+    <UpdateFunction FunctionId="FunctionId4">
+      <Argument Parameter="author_id" Member="AuthorID" />
+      <Argument Parameter="author_first_name" Member="FirstName" />
+      <Argument Parameter="author_middle_name" Member="MiddleName" />
+      <Argument Parameter="author_last_name" Member="LastName" />
+      <Argument Parameter="author_painting_style" Member="PaintingStyle" />
+      <Argument Parameter="author_yb" Member="YearBorn" />
+    </UpdateFunction>
+  </Table>
+  <Table Name="dbo.UsersInformation" Member="UsersInformations">
+    <Type Name="UsersInformation">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="User_password" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.Delete_Painting" Method="Delete_Painting">
+    <Parameter Name="painting_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Id="FunctionId2" Name="dbo.Update_Authors_Paintings" Method="Update_Authors_Paintings">
+    <Parameter Name="author_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="painting_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="author_first_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_middle_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_last_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_painting_style" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_yb" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="name_painting" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="year_made" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="medium" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Select_Authors_Paintings" Method="Select_Authors_Paintings">
+    <ElementType Name="Select_Authors_PaintingsResult">
+      <Column Name="AuthorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PaintingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Име" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Презиме" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Фамилия" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="[Стил на рисуване]" Member="Стил_на_рисуване" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="[Дата на раждане]" Member="Дата_на_раждане" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[Име на картината]" Member="Име_на_картината" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="[Дата на създаване на картината]" Member="Дата_на_създаване_на_картината" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="[Използван материал]" Member="Използван_материал" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Id="FunctionId1" Name="dbo.Insert_Info" Method="Insert_Info">
+    <Parameter Name="author_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="painting_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="painting_ym" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="painting_medium" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Select_Author_ID" Method="Select_Author_ID">
+    <Parameter Name="authorid" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Select_Author_IDResult">
+      <Column Name="AuthorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Име" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Презиме" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Фамилия" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="[Стил на рисуване]" Member="Стил_на_рисуване" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="[Дата на раждане]" Member="Дата_на_раждане" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Id="FunctionId3" Name="dbo.Delete_Author" Method="Delete_Author">
+    <Parameter Name="author_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Insert_Authors" Method="Insert_Authors">
+    <Parameter Name="author_first_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_middle_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_last_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_painting_style" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_yb" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Select_All_Authors" Method="Select_All_Authors">
+    <ElementType Name="Select_All_AuthorsResult">
+      <Column Name="AuthorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Име" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Презиме" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Фамилия" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="[Стил на рисуване]" Member="Стил_на_рисуване" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="[Дата на раждане]" Member="Дата_на_раждане" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Id="FunctionId4" Name="dbo.Update_Authors" Method="Update_Authors">
+    <Parameter Name="author_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="author_first_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_middle_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_last_name" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_painting_style" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="author_yb" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Author_Search" Method="Author_Search">
+    <Parameter Name="author_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="Author_SearchResult">
+      <Column Name="NameOfPainting" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.User_check" Method="User_check">
+    <Parameter Name="username" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="password" Type="System.String" DbType="VarChar(255)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
